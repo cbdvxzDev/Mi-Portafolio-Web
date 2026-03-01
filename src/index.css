@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colores de Marca */
+  --color-brand-accent: #6d28d9;
+  --color-brand-text: #0a0a0a;
+  --color-brand-muted: #6b7280;
+
+  /* Mapeo de Clases Semánticas */
+  --color-surface: var(--surface-bg);
+  --color-surface-section: var(--surface-section);
+  --color-surface-card: var(--surface-card);
+  --color-surface-alt: var(--surface-card-alt);
+  --color-surface-border: var(--surface-border);
+
+  /* Genera: text-primary, text-secondary, text-inverse */
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-inverse: var(--text-inverse);
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* MODO CLARO */
+:root {
+  --surface-bg: #ffffff;
+  --surface-section: #fafafa;
+  --surface-card: #ffffff;
+  --surface-card-alt: #f3f4f6;
+  --surface-border: #e5e7eb;
+
+  --text-primary: #0a0a0a;    /* Negro para títulos */
+  --text-secondary: #4b5563;  /* Gris oscuro para párrafos */
+  --text-inverse: #ffffff;
+}
+
+/* MODO OSCURO - ¡Aquí está la magia! */
+.dark {
+  --surface-bg: #0a0a0a;      /* Fondo total negro */
+  --surface-section: #111111; 
+  --surface-card: #1a1a1a;    /* Fondo de tarjeta gris MUY oscuro */
+  --surface-card-alt: #262626;
+  --surface-border: #333333;
+
+  --text-primary: #ffffff !important;   /* Blanco PURO para que resalte */
+  --text-secondary: #d1d5db !important; /* Gris claro para que se lea bien */
+  --text-inverse: #0a0a0a;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--surface-bg);
+    color: var(--text-primary);
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+}   
