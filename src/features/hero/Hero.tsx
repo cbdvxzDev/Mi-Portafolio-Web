@@ -125,33 +125,37 @@ export const Hero = () => {
 
           </Reveal>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
 
-            <Magnetic>
-              <Button
-                variant="primary"
-                onClick={scrollToProjects}
-                className="h-12 sm:h-14 md:h-16 px-7 md:px-10 text-[10px] md:text-[11px] font-black uppercase tracking-widest bg-black text-white dark:bg-white dark:text-black hover:opacity-90 active:scale-95 transition-all shadow-xl rounded-xl"
-              >
-                Explorar proyectos
-              </Button>
-            </Magnetic>
-
-            <Magnetic>
-              <a
-                href="/CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
+            <div className="w-full sm:w-auto">
+              <Magnetic>
                 <Button
-                  variant="outline"
-                  className="w-full h-12 sm:h-14 md:h-16 px-7 md:px-10 text-[10px] md:text-[11px] font-black uppercase tracking-widest border-2 border-black text-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-xl"
+                  variant="primary"
+                  onClick={scrollToProjects}
+                  className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-7 md:px-10 text-[10px] md:text-[11px] font-black uppercase tracking-widest bg-black text-white dark:bg-white dark:text-black hover:opacity-90 active:scale-95 transition-all shadow-xl rounded-xl"
                 >
-                  Descargar CV
+                  Explorar proyectos
                 </Button>
-              </a>
-            </Magnetic>
+              </Magnetic>
+            </div>
+
+            <div className="w-full sm:w-auto">
+              <Magnetic>
+                <a
+                  href="/HV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto block"
+                >
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-7 md:px-10 text-[10px] md:text-[11px] font-black uppercase tracking-widest border-2 border-black text-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-xl"
+                  >
+                    Descargar CV
+                  </Button>
+                </a>
+              </Magnetic>
+            </div>
 
           </div>
 
