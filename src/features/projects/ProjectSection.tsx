@@ -12,9 +12,9 @@ const fadeUp: Variants = {
 };
 
 export const ProjectSection = () => {
-  const featured = projects[0];
-  const secondary = projects.slice(1, 3);
-  const last = projects[3];
+  // Filtramos dinámicamente para no depender de posiciones fijas del array
+  const featuredProject = projects.find(p => p.featured) || projects[0];
+  const gridProjects = projects.filter(p => p.id !== featuredProject?.id);
 
   return (
     <section id="projects" className="py-14 md:py-24 bg-white dark:bg-black overflow-hidden px-5 sm:px-6">
@@ -32,22 +32,21 @@ export const ProjectSection = () => {
           </div>
         </div>
 
-        {/* PROYECTO DESTACADO */}
-        <div className="grid grid-cols-1 gap-5 mb-5">
-          {featured && (
+        {/* 1. PROYECTO DESTACADO (ANCHO COMPLETO) */}
+        {featuredProject && (
+          <div className="grid grid-cols-1 gap-5 mb-5">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
               <a
-                href={featured.link}
+                href={featuredProject.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex flex-col md:flex-row rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 transition-all duration-500 hover:border-brand-accent/30"
               >
-                {/* Imagen: altura fija en móvil, proporcional en desktop */}
-                <div className="w-full md:w-[60%] h-220px sm:h-280px md:h-420px lg:h-[460px">
+                <div className="w-full md:w-[60%] h-[220px] sm:h-[280px] md:h-[420px] lg:h-[460px]">
                   <img
-                    src={featured.image}
+                    src={featuredProject.image}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    alt={featured.title}
+                    alt={featuredProject.title}
                     loading="lazy"
                   />
                 </div>
@@ -55,13 +54,13 @@ export const ProjectSection = () => {
                   <div>
                     <span className="text-[10px] font-black text-brand-accent tracking-widest uppercase mb-3 block">01 / Destacado</span>
                     <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-black dark:text-white uppercase mb-3 leading-tight">
-                      {featured.title}
+                      {featuredProject.title}
                     </h3>
-                    {featured.description && (
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4 leading-relaxed">{featured.description}</p>
+                    {featuredProject.description && (
+                      <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4 leading-relaxed">{featuredProject.description}</p>
                     )}
                     <div className="flex flex-wrap gap-2">
-                      {featured.tags.map(tag => (
+                      {featuredProject.tags.map(tag => (
                         <span key={tag} className="text-[8px] font-black uppercase px-2 py-1 bg-white dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700">{tag}</span>
                       ))}
                     </div>
@@ -72,13 +71,21 @@ export const ProjectSection = () => {
                 </div>
               </a>
             </motion.div>
-          )}
-        </div>
+          </div>
+        )}
 
-        {/* PROYECTOS SECUNDARIOS — 1 columna en móvil, 2 en tablet/desktop */}
+        {/* 2. GRID COMPLETO Y DINÁMICO (Soporta infinitos proyectos en pares/bento) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {secondary.map((project, i) => (
-            <motion.div key={project.id} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1}>
+          {gridProjects.map((project, i) => (
+            <motion.div 
+              key={project.id} 
+              variants={fadeUp} 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true }} 
+              custom={i + 1}
+              className={project.status ? "opacity-80 hover:opacity-100 transition-opacity" : ""}
+            >
               <a
                 href={project.link}
                 target="_blank"
@@ -92,9 +99,22 @@ export const ProjectSection = () => {
                     alt={project.title}
                     loading="lazy"
                   />
-                  {project.wip && (
-                    <span className="absolute top-3 right-3 text-[8px] font-black uppercase tracking-widest bg-black/70 text-white px-3 py-1 rounded-full backdrop-blur-sm">
-                      En construcción
+                  {project.status && (
+                    <span
+                      className={`absolute top-3 right-3 text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-sm text-white
+                        ${
+                          project.status === "paused"
+                            ? "bg-red-500/90"
+                            : project.status === "building"
+                            ? "bg-amber-500/90"
+                            : "bg-emerald-500/90"
+                        }`}
+                    >
+                      {project.status === "paused"
+                        ? "En pausa"
+                        : project.status === "building"
+                        ? "En construcción"
+                        : "Completado"}
                     </span>
                   )}
                 </div>
@@ -104,9 +124,9 @@ export const ProjectSection = () => {
                   {project.description && (
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 leading-relaxed">{project.description}</p>
                   )}
-                  <div className="mt-auto flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[7px] font-black text-zinc-400 uppercase tracking-tighter border-b border-zinc-200 dark:border-zinc-800">{tag}</span>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="text-[7px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-tighter border-b border-zinc-200 dark:border-zinc-800">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -115,45 +135,7 @@ export const ProjectSection = () => {
           ))}
         </div>
 
-        {/* ÚLTIMO PROYECTO */}
-        {last && (
-          <motion.div className="mt-5" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={3}>
-            <div className="group relative rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 flex flex-col sm:flex-row-reverse transition-all duration-500 opacity-70 hover:opacity-100">
-              <div className="w-full sm:w-[40%] h-180px sm:h-240px">
-                <img
-                  src={last.image}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  alt={last.title}
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-5 sm:p-8 md:p-10 w-full sm:w-[60%] flex flex-col justify-between">
-                <div>
-                  <div className="flex flex-wrap items-center gap-2 mb-3">
-                    <span className="text-[8px] font-black text-brand-accent uppercase tracking-widest">{last.category}</span>
-                    {last.wip && (
-                      <span className="text-[7px] font-black uppercase tracking-widest bg-zinc-200 dark:bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded-full">
-                        En construcción
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-black dark:text-white uppercase mb-3 leading-tight">
-                    {last.title}
-                  </h3>
-                  {last.description && (
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{last.description}</p>
-                  )}
-                </div>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {last.tags.map(tag => (
-                    <span key={tag} className="text-[8px] font-black uppercase px-2 py-1 bg-white dark:bg-zinc-800 rounded border border-zinc-200 dark:border-zinc-700">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
       </div>
     </section>
   );
-}
+};

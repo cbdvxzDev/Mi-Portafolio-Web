@@ -1,17 +1,20 @@
 import portafolioarq from '../../assets/portafolioarq.png';
-import restaurante from '../../assets/restaurante.png';
 import royalairlines from '../../assets/royalairlines.png';
+import WebAI from '../../assets/AIWeb.png';
+import ShopE from '../../assets/SEsencial.png';
 
 export interface Project {
   id: number;
   title: string;
-  category: string;
+  description: string;
   image: string;
-  tags: string[];
   link: string;
+  category: string;
+  tags: string[];
   featured?: boolean;
-  description?: string;
-  wip?: boolean;
+
+  // Estado del proyecto
+  status?: "completed" | "building" | "paused";
 }
 
 export const projects: Project[] = [
@@ -27,32 +30,31 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Sazón Latino",
-    category: "Restaurante",
-    image: restaurante,
-    tags: ["React", "TypeScript", "Node.js", "MongoDB"],
-    link: "https://sazonlatino.netlify.app/",
-    featured: true,
-    description: "Plataforma web para restaurante con menú interactivo y sistema de reservas."
-  },
-  {
-    id: 3,
     title: "Royal Airlines",
     category: "Sistema de Reservas",
     image: royalairlines,
-    tags: ["React", "Spring Boot", "MongoDB"],
-    link: "#",
+    tags: ["React", "Spring Boot - Java", "MongoDB"],
+    link: "https://royalairlines.netlify.app/",
     description: "Sistema de reservas de vuelos con gestión de pasajeros y panel de administración."
   },
   {
-    id: 4,
-    title: "GiborSec",
+    id: 3,
+    title: "AI Web",
     category: "Seguridad Digital",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-    tags: ["React Native", "Firebase", "Expo"],
+    image: WebAI,
+    tags: ["React Native", "SpringBoot", "Docker"],
     link: "#",
-    featured: false,
-    wip: true,
-    description: "App móvil de seguridad digital. Próximamente disponible."
+    status: "paused",
+    description: "App móvil de seguridad digital orientada a la protección avanzada. Próximamente disponible."
+  },
+  {
+    id: 4,
+    title: "E-commerce",
+    category: "E-commerce electrónico",
+    image: ShopE,
+    tags: ["NextJS", "Tailwind", "Node.js"],
+    link: "#",
+    status: "building",
+    description: "Plataforma de comercio electrónico moderna y optimizada para la conversión. En desarrollo."
   }
 ];
