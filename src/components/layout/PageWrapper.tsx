@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 export const PageWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <motion.main
+    <motion.div
       // Estructura semántica para accesibilidad
       initial={{ opacity: 0, y: 10 }} 
       animate={{ opacity: 1, y: 0 }}   
@@ -21,6 +21,6 @@ export const PageWrapper = ({ children }: { children: ReactNode }) => {
       <div className="grow w-full">
         {children}
       </div>
-    </motion.main>
+    </motion.div>
   );
 };

@@ -7,8 +7,7 @@ export const Footer = () => {
   const socialLinks = [
     { name: 'LinkedIn', href: 'https://www.linkedin.com/in/carolina-blanquicett-devoz-523068379/' },
     { name: 'GitHub',   href: 'https://github.com/cbdvxzDev' },
-    { name: 'Instagram',href: 'https://www.instagram.com/' },
-    { name: 'CV',       href: '/CV.pdf' },
+    { name: 'CV',       href: '/HV.pdf' },
   ];
 
   return (

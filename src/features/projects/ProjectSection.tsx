@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { projects } from './projectsData';
+import type { Project } from './projectsData';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -11,15 +12,34 @@ const fadeUp: Variants = {
   }),
 };
 
+const ProjectLink = ({ project, className, children }: { project: Project; className?: string; children: React.ReactNode }) => {
+  if (!project.link) {
+    return (
+      <div className={`group relative flex flex-col ${className} cursor-default`}>
+        {children}
+      </div>
+    );
+  }
+  return (
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group relative flex flex-col ${className}`}
+    >
+      {children}
+    </a>
+  );
+};
+
 export const ProjectSection = () => {
-  // Filtramos dinámicamente para no depender de posiciones fijas del array
   const featuredProject = projects.find(p => p.featured) || projects[0];
   const gridProjects = projects.filter(p => p.id !== featuredProject?.id);
 
   return (
     <section id="projects" className="py-14 md:py-24 bg-white dark:bg-black overflow-hidden px-5 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* HEADER */}
         <div className="relative mb-12 md:mb-20">
           <span className="absolute -top-8 -left-2 text-[clamp(40px,12vw,140px)] font-black text-zinc-100 dark:text-zinc-900/20 select-none uppercase tracking-tighter z-0">
@@ -36,11 +56,9 @@ export const ProjectSection = () => {
         {featuredProject && (
           <div className="grid grid-cols-1 gap-5 mb-5">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-              <a
-                href={featuredProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col md:flex-row rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 transition-all duration-500 hover:border-brand-accent/30"
+              <ProjectLink
+                project={featuredProject}
+                className="md:flex-row rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 transition-all duration-500 hover:border-brand-accent/30"
               >
                 <div className="w-full md:w-[60%] h-[220px] sm:h-[280px] md:h-[420px] lg:h-[460px]">
                   <img
@@ -69,28 +87,26 @@ export const ProjectSection = () => {
                     Ver Proyecto <span className="text-base">→</span>
                   </span>
                 </div>
-              </a>
+              </ProjectLink>
             </motion.div>
           </div>
         )}
 
-        {/* 2. GRID COMPLETO Y DINÁMICO (Soporta infinitos proyectos en pares/bento) */}
+        {/* 2. GRID COMPLETO Y DINÁMICO */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {gridProjects.map((project, i) => (
-            <motion.div 
-              key={project.id} 
-              variants={fadeUp} 
-              initial="hidden" 
-              whileInView="visible" 
-              viewport={{ once: true }} 
+            <motion.div
+              key={project.id}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               custom={i + 1}
               className={project.status ? "opacity-80 hover:opacity-100 transition-opacity" : ""}
             >
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 h-full transition-all hover:border-brand-accent/30"
+              <ProjectLink
+                project={project}
+                className="h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 transition-all hover:border-brand-accent/30"
               >
                 <div className="relative overflow-hidden aspect-video">
                   <img
@@ -129,8 +145,13 @@ export const ProjectSection = () => {
                       <span key={tag} className="text-[7px] font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-tighter border-b border-zinc-200 dark:border-zinc-800">{tag}</span>
                     ))}
                   </div>
+                  {!project.link && (
+                    <p className="mt-3 text-[8px] font-black uppercase tracking-widest text-zinc-400">
+                      {project.status === "paused" ? "Sin enlace disponible" : "Próximamente"}
+                    </p>
+                  )}
                 </div>
-              </a>
+              </ProjectLink>
             </motion.div>
           ))}
         </div>

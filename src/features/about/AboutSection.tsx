@@ -98,7 +98,7 @@ const softSkills = [
             <GraduationCap size={16} className="text-brand-accent" />
             <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">Educación</span>
           </div>
-          <p className="text-xl md:text-2xl font-black text-black dark:text-white leading-tight tracking-tighter uppercase">Ingenieria de Sistemas  <br />8° Semestre </p>
+          <p className="text-xl md:text-2xl font-black text-black dark:text-white leading-tight tracking-tighter uppercase">Ingeniería de Sistemas  <br />8° Semestre </p>
           <p className="text-[8px] uppercase text-zinc-500 mt-2 font-bold leading-tight italic">F. Universitaria Tecnológico Comfenalco</p>
         </Card>
 

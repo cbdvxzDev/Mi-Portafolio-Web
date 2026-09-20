@@ -100,7 +100,7 @@ export const Hero = () => {
               <br />
 
               <span className="text-zinc-400 dark:text-zinc-700 italic font-light lowercase">
-                Junior
+                React &amp; TypeScript
               </span>
 
             </h1>

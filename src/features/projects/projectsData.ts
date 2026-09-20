@@ -8,7 +8,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
-  link: string;
+  link?: string;
   category: string;
   tags: string[];
   featured?: boolean;
@@ -43,17 +43,15 @@ export const projects: Project[] = [
     category: "Seguridad Digital",
     image: WebAI,
     tags: ["React Native", "SpringBoot", "Docker"],
-    link: "#",
     status: "paused",
     description: "App móvil de seguridad digital orientada a la protección avanzada. Próximamente disponible."
   },
   {
     id: 4,
     title: "E-commerce",
-    category: "E-commerce electrónico",
+    category: "Comercio electrónico",
     image: ShopE,
     tags: ["NextJS", "Tailwind", "Node.js"],
-    link: "#",
     status: "building",
     description: "Plataforma de comercio electrónico moderna y optimizada para la conversión. En desarrollo."
   }

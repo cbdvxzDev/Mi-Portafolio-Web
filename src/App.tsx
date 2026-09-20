@@ -6,7 +6,7 @@ import { ProjectSection } from './features/projects/ProjectSection';
 import { AboutSection } from './features/about/AboutSection';
 import { ContactSection } from './features/contact/ContactSection';
 import { AnimatePresence } from 'framer-motion';
-import { ThemeProvider } from './components/context/ThemeContext';
+import { ThemeProvider } from './components/context/ThemeProvider';
 
 function App() {
   return (
