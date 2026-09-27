@@ -1,4 +1,4 @@
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 interface Props {
@@ -9,7 +9,8 @@ interface Props {
 
 export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props) => {
   const ref = useRef(null);
-  
+  const reduceMotion = useReducedMotion();
+
   // Ajuste de margen para diferentes dispositivos
   // En móviles usamos un margen menor para que la animación no se sienta "trabada"
   const isInView = useInView(ref, { 
@@ -17,7 +18,7 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props)
     // "0px -10%": activa la animación cuando el elemento está al 10% de entrar al viewport
     margin: "0px 0px -10% 0px" 
   });
-  
+
   const mainControls = useAnimation();
 
   useEffect(() => {
@@ -37,15 +38,16 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props)
     >
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 30 }, // Reducimos y a 30 para evitar saltos bruscos en móviles
+          // Con movimiento reducido solo mostramos el contenido, sin desplazamientos
+          hidden: reduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 },
           visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
         animate={mainControls}
         transition={{ 
-          duration: 0.6, // Un poco más rápido mejora la sensación de performance
+          duration: reduceMotion ? 0.2 : 0.6, // Un poco más rápido mejora la sensación de performance
           ease: [0.22, 1, 0.36, 1], // EaseOutQuint: Muy suave para monitores y tablets
-          delay: delay 
+          delay: reduceMotion ? 0 : delay 
         }}
       >
         {children}

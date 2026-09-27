@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useRef, useState, useEffect, type ReactNode } from 'react';
 
 export const Magnetic = ({ children }: { children: ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHoverable, setIsHoverable] = useState(true);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     // Verificamos si el dispositivo tiene un puntero preciso (mouse/trackpad)
@@ -19,7 +20,7 @@ export const Magnetic = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isHoverable || !ref.current) return;
+    if (!isHoverable || reduceMotion || !ref.current) return;
 
     const { clientX, clientY } = e;
     const { width, height, left, top } = ref.current.getBoundingClientRect();
@@ -38,12 +39,14 @@ export const Magnetic = ({ children }: { children: ReactNode }) => {
 
   const resetPosition = () => setPosition({ x: 0, y: 0 });
 
+  const isActive = isHoverable && !reduceMotion;
+
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={resetPosition}
-      animate={isHoverable ? { x: position.x, y: position.y } : { x: 0, y: 0 }}
+      animate={isActive ? { x: position.x, y: position.y } : { x: 0, y: 0 }}
       transition={{ 
         type: "spring", 
         stiffness: 150, 

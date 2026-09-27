@@ -1,14 +1,15 @@
-import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'framer-motion';
 import { Github } from 'lucide-react';
 import { Reveal } from '../../components/animations/reveal';
 import { Button } from '../../components/ui/button';
 import { Magnetic } from '../../components/animations/magnetic';
 import { useMousePosition } from '../../hooks/useMousePosition';
-import fotoPerfil from '../../assets/perfil2.png';
+import fotoPerfil from '../../assets/perfil2.webp';
 
 export const Hero = () => {
   const { x, y } = useMousePosition();
   const { scrollY } = useScroll();
+  const reduceMotion = useReducedMotion();
 
   const yText = useTransform(scrollY, [0, 500], [0, -80]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
@@ -31,14 +32,14 @@ export const Hero = () => {
       {/* Spotlight */}
       <motion.div
         className="pointer-events-none absolute -inset-px z-30 opacity-0 lg:opacity-100 transition-opacity duration-500 will-change-transform"
-        style={{ background }}
+        style={reduceMotion ? undefined : { background }}
       />
 
       <div className="relative z-40 w-full max-w-7xl px-5 sm:px-8 md:px-12 lg:px-16 flex flex-col gap-6 sm:gap-8 md:gap-12">
 
         {/* PERFIL */}
         <motion.div
-          style={{ opacity }}
+          style={reduceMotion ? undefined : { opacity }}
           className="flex flex-col sm:flex-row items-start sm:items-center gap-5 lg:gap-10"
         >
           <Reveal>
@@ -91,7 +92,7 @@ export const Hero = () => {
         </motion.div>
 
         {/* TITULO */}
-        <motion.div style={{ y: yText, opacity }}>
+        <motion.div style={reduceMotion ? undefined : { y: yText, opacity }}>
           <Reveal delay={0.3}>
 
             <h1 className="text-[clamp(2.8rem,11vw,6rem)] font-black tracking-tighter leading-[0.85] text-black dark:text-white uppercase">

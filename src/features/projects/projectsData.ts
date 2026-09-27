@@ -1,7 +1,7 @@
-import portafolioarq from '../../assets/portafolioarq.png';
-import royalairlines from '../../assets/royalairlines.png';
-import WebAI from '../../assets/AIWeb.png';
-import ShopE from '../../assets/e-commerce.png';
+import portafolioarq from '../../assets/portafolioarq.webp';
+import royalairlines from '../../assets/royalairlines.webp';
+import WebAI from '../../assets/AIWeb.webp';
+import ShopE from '../../assets/e-commerce.webp';
 
 export interface Project {
   id: number;

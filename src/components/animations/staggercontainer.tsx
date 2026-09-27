@@ -1,4 +1,4 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 interface StaggerContainerProps {
@@ -12,15 +12,16 @@ export const StaggerContainer = ({
   className = "", 
   delay = 0 
 }: StaggerContainerProps) => {
-  
+  const reduceMotion = useReducedMotion();
+
   // Usamos 'type Variants' en la importación para cumplir con la regla 1484
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: delay,
+        staggerChildren: reduceMotion ? 0 : 0.1,
+        delayChildren: reduceMotion ? 0 : delay,
         ease: "easeOut"
       },
     },
