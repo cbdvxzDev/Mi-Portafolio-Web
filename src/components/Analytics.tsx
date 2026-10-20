@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const goatCounterCode = import.meta.env.VITE_GOATCOUNTER_CODE as string | undefined;
+const goatCounterCode = '';
 
 export const Analytics = () => {
   useEffect(() => {
