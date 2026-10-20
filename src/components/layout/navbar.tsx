@@ -14,7 +14,7 @@ export const Navbar = () => {
       { name: 'Proyectos', href: '#projects', external: false },
       { name: 'Sobre mí', href: '#about', external: false },
       { name: 'Contacto', href: '#contact', external: false },
-      { name: 'CV', href: '/HV.pdf', external: true },
+      { name: 'CV', href: '/CV_Carolina_Blanquicett.pdf', external: true },
     ],
     []
   );

@@ -16,6 +16,11 @@ export const ContactSection = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    if (formData.get('_gotcha')) {
+      setStatus('success');
+      return;
+    }
+
     try {
       const response = await fetch("https://formspree.io/f/xjgeedkn", {
         method: "POST",
@@ -57,6 +62,18 @@ export const ContactSection = () => {
                 <span className="text-black dark:text-white font-bold underline decoration-brand-accent/30">Front-End</span>.
                 Mi bandeja de entrada siempre está abierta para nuevos retos.
               </p>
+            </Reveal>
+          </div>
+
+          <div className="space-y-4">
+            <Reveal delay={0.25}>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+                <span>Cartagena, Colombia</span>
+                <span className="w-1 h-1 self-center rounded-full bg-zinc-300 dark:bg-zinc-700" />
+                <span>Remoto o presencial</span>
+                <span className="w-1 h-1 self-center rounded-full bg-zinc-300 dark:bg-zinc-700" />
+                <span>Prácticas y aprendizajes</span>
+              </div>
             </Reveal>
           </div>
 
@@ -142,6 +159,15 @@ export const ContactSection = () => {
                       className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all resize-none placeholder:text-zinc-500 text-sm"
                     />
                   </div>
+
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
 
                   <div className="pt-1">
                     <Button

@@ -143,7 +143,7 @@ export const Hero = () => {
             <div className="w-full sm:w-auto">
               <Magnetic>
                 <a
-                  href="/HV.pdf"
+                  href="/CV_Carolina_Blanquicett.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   download

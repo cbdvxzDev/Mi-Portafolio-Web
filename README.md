@@ -1,5 +1,7 @@
 # Carolina Blanquicett · Frontend Developer
 
+[![CI](https://github.com/cbdvxzDev/Mi-Portafolio-Web/actions/workflows/ci.yml/badge.svg)](https://github.com/cbdvxzDev/Mi-Portafolio-Web/actions/workflows/ci.yml)
+
 Portafolio web personal de Carolina Blanquicett, desarrolladora Frontend de Cartagena, Colombia.
 Sitio de una sola página construido con React, TypeScript, Tailwind CSS y Framer Motion, con diseño responsivo, modo oscuro y animaciones fluidas.
 
@@ -12,6 +14,7 @@ Sitio de una sola página construido con React, TypeScript, Tailwind CSS y Frame
 - Modo claro / oscuro persistente
 - Animaciones con Framer Motion (scroll reveal, magnetic buttons, stagger)
 - Accesibilidad: skip-link, contraste AA, menú móvil con Escape y foco
+- CI con GitHub Actions (lint + build) y security headers en Netlify
 
 ## Stack
 
