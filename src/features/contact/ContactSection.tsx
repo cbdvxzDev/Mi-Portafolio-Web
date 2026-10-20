@@ -52,9 +52,9 @@ export const ContactSection = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-md leading-relaxed font-medium">
-                Estoy buscando mi próxima oportunidad como aprendiz o
-                desarrolladora de software{' '}
-                <span className="text-black dark:text-white font-bold underline decoration-brand-accent/30">full-stack</span>.
+                Estoy buscando mi próxima oportunidad como aprendiz de
+                desarrollo de software, enfocada en{' '}
+                <span className="text-black dark:text-white font-bold underline decoration-brand-accent/30">Front-End</span>.
                 Mi bandeja de entrada siempre está abierta para nuevos retos.
               </p>
             </Reveal>
@@ -67,7 +67,7 @@ export const ContactSection = () => {
             {/* Links sociales — flex-wrap para que no se rompan en pantallas pequeñas */}
             <div className="flex flex-wrap gap-x-6 gap-y-3 sm:gap-x-8 sm:gap-y-4">
               {[
-                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/carolina-blanquicett-devoz-523068379/' },
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/carolina-blanquicett-523068379/' },
                 { name: 'GitHub', url: 'https://github.com/cbdvxzDev' },
                 { name: 'Email', url: `mailto:${email}` }
               ].map((social, i) => (

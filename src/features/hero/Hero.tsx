@@ -97,11 +97,11 @@ export const Hero = () => {
 
             <h1 className="text-[clamp(2.8rem,11vw,6rem)] font-black tracking-tighter leading-[0.85] text-black dark:text-white uppercase">
 
-              Full-Stack Developer
+              Frontend Developer
               <br />
 
               <span className="text-zinc-500 dark:text-zinc-700 italic font-light lowercase">
-                React, Java &amp; TypeScript
+                React &amp; TypeScript
               </span>
 
             </h1>
@@ -114,11 +114,11 @@ export const Hero = () => {
           <Reveal delay={0.4}>
 
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed font-medium tracking-tight">
-              Desarrollo{" "}
+              Diseño y desarrollo{" "}
               <span className="text-black dark:text-white font-bold">
-                aplicaciones web completas, de la interfaz al backend
+                aplicaciones web modernas, funcionales y responsivas
               </span>
-              , con React, TypeScript y Spring Boot, con un enfoque constante en la{" "}
+              , con un enfoque constante en la{" "}
               <span className="text-brand-accent italic font-light">
                 experiencia del usuario.
               </span>

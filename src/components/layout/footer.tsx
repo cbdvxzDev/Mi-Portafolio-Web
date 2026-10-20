@@ -5,7 +5,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/carolina-blanquicett-devoz-523068379/' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/carolina-blanquicett-523068379/' },
     { name: 'GitHub',   href: 'https://github.com/cbdvxzDev' },
     { name: 'CV',       href: '/HV.pdf' },
   ];

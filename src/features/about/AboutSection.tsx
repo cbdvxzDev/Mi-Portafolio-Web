@@ -48,13 +48,13 @@ const softSkills = [
               <div className="flex items-center gap-2 text-brand-accent mb-4">
                 <Code2 size={16} />
                 <span className="text-[9px] font-black uppercase tracking-[0.3em]">
-                  Full-Stack Developer
+                  Frontend Developer
                 </span>
               </div>
 
               Soy <em className="text-brand-accent not-italic font-black">
               Tecnóloga en Desarrollo de Software
-              </em>, estudiante de Ingeniería de Sistemas (8° semestre) y desarrolladora full-stack enfocada en crear aplicaciones modernas, rápidas y escalables con React, Next.js, TypeScript y Spring Boot.
+              </em>, estudiante de Ingeniería de Sistemas (8° semestre) y desarrolladora Frontend enfocada en crear aplicaciones modernas, rápidas y escalables con React, Next.js y TypeScript.
             </div>
 
             <br />
