@@ -57,7 +57,7 @@ export const Hero = () => {
             <div className="flex flex-col gap-2 sm:gap-3">
 
               <div className="flex items-center gap-2 sm:gap-3">
-                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-zinc-400 font-bold">
+                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-zinc-500 dark:text-zinc-400 font-bold">
                   Colombia
                 </p>
 
@@ -68,7 +68,7 @@ export const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Perfil de GitHub"
-                  className="flex items-center gap-1.5 text-zinc-400 hover:text-brand-accent dark:hover:text-brand-accent transition-colors duration-300"
+                  className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-brand-accent dark:hover:text-brand-accent transition-colors duration-300"
                 >
                   <Github size={13} strokeWidth={2} className="shrink-0" />
                   <span className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] font-bold">
@@ -84,7 +84,7 @@ export const Hero = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent" />
                 </span>
 
-                Disponible para oportunidades laborales
+                Disponible para aprendizajes y prácticas
               </div>
 
             </div>
@@ -97,11 +97,11 @@ export const Hero = () => {
 
             <h1 className="text-[clamp(2.8rem,11vw,6rem)] font-black tracking-tighter leading-[0.85] text-black dark:text-white uppercase">
 
-              Frontend Developer
+              Full-Stack Developer
               <br />
 
-              <span className="text-zinc-400 dark:text-zinc-700 italic font-light lowercase">
-                React &amp; TypeScript
+              <span className="text-zinc-500 dark:text-zinc-700 italic font-light lowercase">
+                React, Java &amp; TypeScript
               </span>
 
             </h1>
@@ -114,11 +114,11 @@ export const Hero = () => {
           <Reveal delay={0.4}>
 
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed font-medium tracking-tight">
-              Diseño y desarrollo{" "}
+              Desarrollo{" "}
               <span className="text-black dark:text-white font-bold">
-                aplicaciones web modernas, funcionales y responsivas
+                aplicaciones web completas, de la interfaz al backend
               </span>
-              , con un enfoque constante en la{" "}
+              , con React, TypeScript y Spring Boot, con un enfoque constante en la{" "}
               <span className="text-brand-accent italic font-light">
                 experiencia del usuario.
               </span>
@@ -146,14 +146,10 @@ export const Hero = () => {
                   href="/HV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto block"
+                  download
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 h-12 sm:h-14 md:h-16 px-7 md:px-10 text-[10px] md:text-[11px] font-black uppercase tracking-widest border-2 border-black text-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black active:scale-95 transition-all rounded-xl select-none touch-manipulation"
                 >
-                  <Button
-                    variant="outline"
-                    className="w-full sm:w-auto h-12 sm:h-14 md:h-16 px-7 md:px-10 text-[10px] md:text-[11px] font-black uppercase tracking-widest border-2 border-black text-black dark:border-white dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all rounded-xl"
-                  >
-                    Descargar CV
-                  </Button>
+                  Descargar CV
                 </a>
               </Magnetic>
             </div>

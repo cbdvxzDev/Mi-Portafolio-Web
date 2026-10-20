@@ -1,6 +1,6 @@
-# Carolina Blanquicett · Frontend Developer
+# Carolina Blanquicett · Full-Stack Developer
 
-Portafolio web personal de Carolina Blanquicett, desarrolladora Frontend de Cartagena, Colombia.
+Portafolio web personal de Carolina Blanquicett, desarrolladora full-stack de Cartagena, Colombia.
 Sitio de una sola página construido con React, TypeScript, Tailwind CSS y Framer Motion, con diseño responsivo, modo oscuro y animaciones fluidas.
 
 ## Características
@@ -11,6 +11,7 @@ Sitio de una sola página construido con React, TypeScript, Tailwind CSS y Frame
 - Formulario de contacto funcional (Formspree)
 - Modo claro / oscuro persistente
 - Animaciones con Framer Motion (scroll reveal, magnetic buttons, stagger)
+- Accesibilidad: skip-link, contraste AA, menú móvil con Escape y foco
 
 ## Stack
 

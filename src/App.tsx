@@ -22,11 +22,19 @@ function App() {
           }}
         />
 
+        {/* Skip-link: accesibilidad para teclado y lectores de pantalla */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-500 focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black focus:px-5 focus:py-3 focus:rounded-xl focus:text-xs focus:font-black focus:uppercase focus:tracking-widest"
+        >
+          Saltar al contenido
+        </a>
+
         <Navbar />
 
         <AnimatePresence mode="wait">
           <PageWrapper>
-            <main className="flex flex-col w-full relative z-10">
+            <main id="main-content" className="flex flex-col w-full relative z-10">
 
               {/* Cada sección gestiona su propio padding interno */}
               <Hero />

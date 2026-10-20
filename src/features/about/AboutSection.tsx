@@ -36,7 +36,7 @@ const softSkills = [
     <section id="about" className="py-12 md:py-20 max-w-7xl mx-auto px-5">
       <Reveal>
         <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter mb-10 text-black dark:text-white leading-[0.85]">
-          Detrás del <span className="text-zinc-400 dark:text-zinc-600 italic font-light">código</span>
+          Detrás del <span className="text-zinc-500 dark:text-zinc-600 italic font-light">código</span>
         </h2>
       </Reveal>
 
@@ -48,13 +48,13 @@ const softSkills = [
               <div className="flex items-center gap-2 text-brand-accent mb-4">
                 <Code2 size={16} />
                 <span className="text-[9px] font-black uppercase tracking-[0.3em]">
-                  Frontend Developer
+                  Full-Stack Developer
                 </span>
               </div>
 
               Soy <em className="text-brand-accent not-italic font-black">
               Tecnóloga en Desarrollo de Software
-              </em>, estudiante de Ingeniería de Sistemas y desarrolladora Frontend enfocada en crear aplicaciones modernas, rápidas y escalables con React, Next.js y TypeScript.
+              </em>, estudiante de Ingeniería de Sistemas (8° semestre) y desarrolladora full-stack enfocada en crear aplicaciones modernas, rápidas y escalables con React, Next.js, TypeScript y Spring Boot.
             </div>
 
             <br />
@@ -64,6 +64,13 @@ const softSkills = [
             <br />
             
             Mi discapacidad auditiva ha fortalecido habilidades como la concentración, la perseverancia y la atención al detalle, cualidades que aplico diariamente en cada proyecto.
+
+            <br />
+
+            <span className="font-bold text-black dark:text-white">
+              Actualmente busco una oportunidad como aprendiz o profesional junior de desarrollo de software
+            </span>{" "}
+            donde aplicar y seguir creciendo.
 
             <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none" />
           </Card>
@@ -81,7 +88,7 @@ const softSkills = [
 
         {/* TOOLKIT */}
         <Card className="md:col-span-6 lg:col-span-5 bg-zinc-50 dark:bg-zinc-900 p-0">
-          <h3 className="font-black text-[9px] uppercase tracking-[0.3em] text-zinc-400 mb-4">Toolkit</h3>
+          <h3 className="font-black text-[9px] uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400 mb-4">Toolkit</h3>
           <div className="flex flex-wrap gap-2">
             {stack.map((tech) => (
               <div key={tech.name} className="flex items-center gap-1.5 px-2 py-1 rounded bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700/50">
@@ -96,20 +103,23 @@ const softSkills = [
         <Card className="md:col-span-6 lg:col-span-3 border-2 border-dashed border-zinc-200 dark:border-zinc-800 p-0 flex flex-col justify-between">
           <div className="flex items-center gap-2 mb-2">
             <GraduationCap size={16} className="text-brand-accent" />
-            <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">Educación</span>
+            <span className="text-[9px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">Educación</span>
           </div>
           <p className="text-xl md:text-2xl font-black text-black dark:text-white leading-tight tracking-tighter uppercase">Ingeniería de Sistemas  <br />8° Semestre </p>
-          <p className="text-[8px] uppercase text-zinc-500 mt-2 font-bold leading-tight italic">F. Universitaria Tecnológico Comfenalco</p>
+          <p className="text-[9px] uppercase text-zinc-500 dark:text-zinc-400 mt-2 font-bold leading-tight italic">F. Universitaria Tecnológico Comfenalco</p>
+          <p className="text-[9px] uppercase text-zinc-500 dark:text-zinc-400 mt-1 font-bold leading-tight italic">
+            Tecnóloga en Desarrollo de Software
+          </p>
         </Card>
 
         {/* SOFT SKILLS */}
         <Card className="md:col-span-6 lg:col-span-4 bg-brand-accent border-none p-0 flex flex-col justify-between">
-          <h3 className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-400">Soft Skills</h3>
+          <h3 className="text-[9px] font-black uppercase tracking-[0.3em] text-white/80">Soft Skills</h3>
           <div className="flex flex-col gap-3 mt-4">
             {softSkills.map(({ label, sub }) => (
-              <div key={label} className="border-t border-black/10 pt-2 last:pb-0">
-                <p className="text-xl md:text-2xl font-black text-black dark:text-white tracking-tighter leading-none">{label}</p>
-                <p className="text-[8px] text-zinc-400 uppercase font-black italic">{sub}</p>
+              <div key={label} className="border-t border-white/20 pt-2 last:pb-0">
+                <p className="text-xl md:text-2xl font-black text-white tracking-tighter leading-none">{label}</p>
+                <p className="text-[9px] text-white/80 uppercase font-black italic">{sub}</p>
               </div>
             ))}
           </div>

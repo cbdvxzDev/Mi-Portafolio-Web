@@ -58,7 +58,7 @@ export const Footer = () => {
         {/* Inferior: Créditos + Stack */}
         <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-zinc-100 dark:border-zinc-800
                         flex flex-col sm:flex-row justify-between items-center gap-5 sm:gap-8
-                        text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-zinc-400 font-bold">
+                        text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 font-bold">
 
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
             <p>© {currentYear} — Hecho por Carolina</p>
@@ -67,7 +67,7 @@ export const Footer = () => {
           </div>
 
           {/* Stack — se oculta en móviles muy pequeños para no saturar */}
-          <div className="hidden xs:flex flex-wrap justify-center gap-x-4 gap-y-2 opacity-40 hover:opacity-100 transition-opacity duration-300">
+          <div className="hidden sm:flex flex-wrap justify-center gap-x-4 gap-y-2 opacity-70 hover:opacity-100 transition-opacity duration-300">
             {['React', 'TypeScript', 'Framer Motion', 'Tailwind'].map((tech) => (
               <span key={tech} className="hover:text-brand-accent transition-colors">
                 {tech}

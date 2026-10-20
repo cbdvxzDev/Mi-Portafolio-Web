@@ -1,11 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { useScrollSpy } from '../../hooks/useScrollSpy';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  const navLinks = useMemo(
+    () => [
+      { name: 'Proyectos', href: '#projects', external: false },
+      { name: 'Sobre mí', href: '#about', external: false },
+      { name: 'Contacto', href: '#contact', external: false },
+      { name: 'CV', href: '/HV.pdf', external: true },
+    ],
+    []
+  );
+  const navLinkIds = useMemo(() => ['projects', 'about', 'contact'], []);
+  const activeId = useScrollSpy(navLinkIds);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -13,6 +27,7 @@ export const Navbar = () => {
 
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      firstLinkRef.current?.focus();
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -20,11 +35,14 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen]);
 
-  const navLinks = [
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Sobre mí', href: '#about' },
-    { name: 'Contacto', href: '#contact' },
-  ];
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   const scrollToTop = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -61,10 +79,21 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.25em] text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors relative group"
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                aria-current={activeId === link.href.slice(1) ? 'page' : undefined}
+                className={`text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.25em] transition-colors relative group ${
+                  activeId === link.href.slice(1)
+                    ? 'text-black dark:text-white'
+                    : 'text-zinc-500 hover:text-black dark:text-zinc-400 dark:hover:text-white'
+                }`}
               >
                 {link.name}
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-accent rounded-full opacity-0 group-hover:opacity-100 transition-all" />
+                <span
+                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 w-1 bg-brand-accent rounded-full transition-all ${
+                    activeId === link.href.slice(1) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}
+                />
               </a>
             ))}
           </div>
@@ -74,7 +103,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Trigger (< 768px) */}
-        <div className="md:hidden flex items-center gap-3 z-110">
+        <div className="md:hidden relative flex items-center gap-3 z-110">
           <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -94,17 +123,23 @@ export const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menú de navegación"
               className="fixed inset-0 bg-white dark:bg-black flex flex-col justify-center px-8 md:hidden"
               style={{ height: '100dvh' }}
             >
               <div className="flex flex-col gap-6 sm:gap-8">
                 {navLinks.map((link, i) => (
                   <motion.a
+                    ref={i === 0 ? firstLinkRef : undefined}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}
                     key={link.name}
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setIsOpen(false)}
                     className="text-3xl sm:text-4xl font-bold tracking-tighter text-black dark:text-white hover:text-brand-accent transition-all"
                   >

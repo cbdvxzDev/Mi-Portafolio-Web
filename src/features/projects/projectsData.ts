@@ -35,7 +35,7 @@ export const projects: Project[] = [
     image: royalairlines,
     tags: ["React", "Spring Boot - Java", "MongoDB"],
     link: "https://royalairlines.netlify.app/",
-    description: "Sistema de reservas de vuelos con gestión de pasajeros y panel de administración."
+    description: "Sistema de reservas de vuelos con gestión de pasajeros, disponibilidad de asientos y panel de administración. Frontend en React y API REST en Spring Boot con MongoDB."
   },
   {
     id: 3,
@@ -51,8 +51,10 @@ export const projects: Project[] = [
     title: "E-commerce",
     category: "Comercio electrónico",
     image: ShopE,
-    tags: ["NextJS", "Tailwind", "Node.js"],
+    tags: ["Next.js", "Spring Boot", "MongoDB", "Tailwind"],
+    link: "https://github.com/cbdvxzDev/Practica-NextJs",
     status: "building",
-    description: "Plataforma de comercio electrónico moderna y optimizada para la conversión. En desarrollo."
+    description:
+      "Tienda de moda full stack: catálogo, carrito, checkout, pedidos y panel de administración en Next.js, con API propia en Spring Boot y MongoDB."
   }
 ];

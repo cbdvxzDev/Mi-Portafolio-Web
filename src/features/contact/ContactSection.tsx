@@ -52,8 +52,9 @@ export const ContactSection = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-md leading-relaxed font-medium">
-                Estoy buscando mi próxima oportunidad en el desarrollo{' '}
-                <span className="text-black dark:text-white font-bold underline decoration-brand-accent/30">Front-End</span>.
+                Estoy buscando mi próxima oportunidad como aprendiz o
+                desarrolladora de software{' '}
+                <span className="text-black dark:text-white font-bold underline decoration-brand-accent/30">full-stack</span>.
                 Mi bandeja de entrada siempre está abierta para nuevos retos.
               </p>
             </Reveal>
@@ -61,7 +62,7 @@ export const ContactSection = () => {
 
           <div className="space-y-4">
             <Reveal delay={0.3}>
-              <p className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 font-black">Redes y contacto</p>
+              <p className="text-[9px] uppercase tracking-[0.4em] text-zinc-500 dark:text-zinc-400 font-black">Redes y contacto</p>
             </Reveal>
             {/* Links sociales — flex-wrap para que no se rompan en pantallas pequeñas */}
             <div className="flex flex-wrap gap-x-6 gap-y-3 sm:gap-x-8 sm:gap-y-4">
@@ -105,35 +106,40 @@ export const ContactSection = () => {
                   {/* Nombre + Email: apilados en móvil, lado a lado en sm+ */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div className="space-y-2">
-                      <label className="text-[9px] uppercase tracking-[0.2em] font-black ml-1 text-zinc-400">Nombre</label>
+                      <label htmlFor="contact-name" className="text-[9px] uppercase tracking-[0.2em] font-black ml-1 text-zinc-500 dark:text-zinc-400">Nombre</label>
                       <input
+                        id="contact-name"
                         name="name"
                         type="text"
                         required
+                        autoComplete="name"
                         placeholder="Tu nombre"
-                        className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all placeholder:text-zinc-400 text-sm"
+                        className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all placeholder:text-zinc-500 text-sm"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[9px] uppercase tracking-[0.2em] font-black ml-1 text-zinc-400">Email</label>
+                      <label htmlFor="contact-email" className="text-[9px] uppercase tracking-[0.2em] font-black ml-1 text-zinc-500 dark:text-zinc-400">Email</label>
                       <input
+                        id="contact-email"
                         name="email"
                         type="email"
                         required
+                        autoComplete="email"
                         placeholder="hola@tuemail.com"
-                        className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all placeholder:text-zinc-400 text-sm"
+                        className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all placeholder:text-zinc-500 text-sm"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[9px] uppercase tracking-[0.2em] font-black ml-1 text-zinc-400">Mensaje</label>
+                    <label htmlFor="contact-message" className="text-[9px] uppercase tracking-[0.2em] font-black ml-1 text-zinc-500 dark:text-zinc-400">Mensaje</label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       rows={4}
                       required
                       placeholder="Cuéntame sobre tu proyecto..."
-                      className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all resize-none placeholder:text-zinc-400 text-sm"
+                      className="w-full bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 text-black dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all resize-none placeholder:text-zinc-500 text-sm"
                     />
                   </div>
 
@@ -150,6 +156,7 @@ export const ContactSection = () => {
 
                   {status === 'error' && (
                     <motion.p
+                      role="alert"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       className="text-red-500 text-[9px] uppercase font-black tracking-widest text-center"
@@ -178,7 +185,7 @@ export const ContactSection = () => {
                   </div>
                   <button
                     onClick={() => setStatus('idle')}
-                    className="text-[9px] uppercase tracking-[0.3em] font-black text-zinc-400 hover:text-brand-accent transition-colors"
+                    className="text-[9px] uppercase tracking-[0.3em] font-black text-zinc-500 dark:text-zinc-400 hover:text-brand-accent transition-colors"
                   >
                     ← Enviar otro
                   </button>

@@ -116,7 +116,7 @@ export const ProjectSection = () => {
             </h2>
             <div className="flex items-center gap-4">
               <span className="h-px w-10 md:w-20 bg-zinc-300 dark:bg-zinc-800" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
                 {total} Proyectos
               </span>
             </div>
@@ -234,7 +234,7 @@ export const ProjectSection = () => {
                 <div className="p-5 sm:p-7 flex flex-col grow gap-4">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <span className="text-[8px] font-black text-brand-accent uppercase tracking-[0.3em]">
+                      <span className="text-[9px] font-black text-brand-accent uppercase tracking-[0.3em]">
                         {project.category}
                       </span>
                       <h3 className="mt-2 text-lg sm:text-xl font-black tracking-tighter text-black dark:text-white uppercase leading-none">
@@ -253,7 +253,7 @@ export const ProjectSection = () => {
                   <div className="mt-auto pt-2 flex flex-col gap-4">
                     <TagRow tags={project.tags} />
                     {!project.link && (
-                      <span className="text-[8px] font-black uppercase tracking-[0.25em] text-zinc-400">
+                      <span className="text-[9px] font-black uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400">
                         {project.status === 'paused' ? 'Sin enlace disponible' : 'Muy pronto'}
                       </span>
                     )}
