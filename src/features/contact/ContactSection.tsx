@@ -57,8 +57,8 @@ export const ContactSection = () => {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-md leading-relaxed font-medium">
-                Estoy buscando mi próxima oportunidad como aprendiz de
-                desarrollo de software, enfocada en{' '}
+                Estoy buscando mi próxima oportunidad como desarrolladora
+                Frontend junior, enfocada en{' '}
                 <span className="text-black dark:text-white font-bold underline decoration-brand-accent/30">Front-End</span>.
                 Mi bandeja de entrada siempre está abierta para nuevos retos.
               </p>
@@ -72,7 +72,7 @@ export const ContactSection = () => {
                 <span className="w-1 h-1 self-center rounded-full bg-zinc-300 dark:bg-zinc-700" />
                 <span>Remoto o presencial</span>
                 <span className="w-1 h-1 self-center rounded-full bg-zinc-300 dark:bg-zinc-700" />
-                <span>Prácticas y aprendizajes</span>
+                <span>Oportunidades junior</span>
               </div>
             </Reveal>
           </div>
@@ -205,7 +205,7 @@ export const ContactSection = () => {
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-xl md:text-2xl font-black text-black dark:text-white tracking-tighter uppercase">¡Recibido!</h3>
-                    <p className="text-zinc-500 text-xs sm:text-sm font-medium max-w-250px mx-auto leading-relaxed">
+                    <p className="text-zinc-500 text-xs sm:text-sm font-medium max-w-[250px] mx-auto leading-relaxed">
                       Tu mensaje ha aterrizado correctamente. Te responderé muy pronto.
                     </p>
                   </div>

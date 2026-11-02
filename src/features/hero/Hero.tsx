@@ -84,7 +84,7 @@ export const Hero = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent" />
                 </span>
 
-                Disponible para aprendizajes y prácticas
+                Abierta a oportunidades junior
               </div>
 
             </div>

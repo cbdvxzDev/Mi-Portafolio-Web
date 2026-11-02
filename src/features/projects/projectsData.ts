@@ -1,6 +1,5 @@
 import portafolioarq from '../../assets/portafolioarq.webp';
 import royalairlines from '../../assets/royalairlines.webp';
-import WebAI from '../../assets/AIWeb.webp';
 import ShopE from '../../assets/e-commerce.webp';
 
 export interface Project {
@@ -26,7 +25,9 @@ export const projects: Project[] = [
     tags: ["React", "Framer Motion", "Tailwind"],
     link: "https://portafolioarquitectura.netlify.app/",
     featured: true,
-    description: "Portafolio visual para estudio de arquitectura con diseño minimalista y animaciones fluidas."
+    status: "completed",
+    description:
+      "El estudio necesitaba presencia online que transmitiera su estética sin opacar el trabajo. Construí un portafolio de una sola página con transiciones suaves, modo oscuro y carga optimizada de imágenes, logrando un sitio responsivo que responde en menos de 2 segundos en móvil."
   },
   {
     id: 2,
@@ -35,26 +36,19 @@ export const projects: Project[] = [
     image: royalairlines,
     tags: ["React", "Spring Boot - Java", "MongoDB"],
     link: "https://royalairlines.netlify.app/",
-    description: "Sistema de reservas de vuelos con gestión de pasajeros, disponibilidad de asientos y panel de administración. Frontend en React y API REST en Spring Boot con MongoDB."
+    status: "completed",
+    description:
+      "Desarrollé un sistema de reservas de vuelos de extremo a extremo: gestión de pasajeros, disponibilidad de asientos en tiempo real y panel de administración. Frontend en React con una API REST en Spring Boot y MongoDB, aplicando arquitectura por capas y validación en ambos extremos."
   },
   {
     id: 3,
-    title: "AI Web",
-    category: "Seguridad Digital",
-    image: WebAI,
-    tags: ["React Native", "SpringBoot", "Docker"],
-    status: "paused",
-    description: "App móvil de seguridad digital orientada a la protección avanzada. Próximamente disponible."
-  },
-  {
-    id: 4,
-    title: "E-commerce",
+    title: "E-commerce Esencial",
     category: "Comercio electrónico",
     image: ShopE,
-    tags: ["Next.js", "Spring Boot", "MongoDB", "Tailwind"],
+    tags: ["Next.js", "Spring Boot", "MongoDB", "TypeScript"],
     link: "https://github.com/cbdvxzDev/Practica-NextJs",
-    status: "building",
+    status: "completed",
     description:
-      "Tienda de moda full stack: catálogo, carrito, checkout, pedidos y panel de administración en Next.js, con API propia en Spring Boot y MongoDB."
+      "Tienda de moda full stack con catálogo, carrito, checkout, autenticación, wishlist y panel de administración completo. Next.js 16 (App Router, TypeScript strict) con estado en Zustand y una API REST propia en Spring Boot 4 con MongoDB, JWT y Swagger. Incluye 44 tests de integración en el front y 70 en el backend, CI en GitHub Actions y despliegue en Netlify y Render."
   }
 ];

@@ -44,7 +44,7 @@ const softSkills = [
         
         {/* BIO PRINCIPAL */}
           <Card className="md:col-span-12 lg:col-span-8 p-0 flex flex-col justify-between relative overflow-hidden h-full border-l-4 border-l-brand-accent">
-            <div className="relative z-10">
+            <div className="relative z-10 space-y-4">
               <div className="flex items-center gap-2 text-brand-accent mb-4">
                 <Code2 size={16} />
                 <span className="text-[9px] font-black uppercase tracking-[0.3em]">
@@ -52,25 +52,25 @@ const softSkills = [
                 </span>
               </div>
 
-              Soy <em className="text-brand-accent not-italic font-black">
-              Tecnóloga en Desarrollo de Software
-              </em>, estudiante de Ingeniería de Sistemas (8° semestre) y desarrolladora Frontend enfocada en crear aplicaciones modernas, rápidas y escalables con React, Next.js y TypeScript.
+              <p>
+                Soy <em className="text-brand-accent not-italic font-black">
+                Tecnóloga en Desarrollo de Software
+                </em>, estudiante de Ingeniería de Sistemas (8° semestre) y desarrolladora Frontend enfocada en crear aplicaciones modernas, rápidas y escalables con React, Next.js y TypeScript.
+              </p>
+
+              <p>
+                Me caracterizo por ser una persona responsable, disciplinada y comprometida con el aprendizaje continuo. Disfruto construir interfaces limpias, accesibles y responsivas, siempre priorizando la experiencia del usuario y las buenas prácticas de desarrollo.
+              </p>
+
+              <p>
+                Mi discapacidad auditiva ha fortalecido habilidades como la concentración, la perseverancia y la atención al detalle, cualidades que aplico diariamente en cada proyecto.
+              </p>
+
+              <p className="font-bold text-black dark:text-white">
+                Actualmente busco una oportunidad junior de desarrollo de software
+                {" "}donde aplicar y seguir creciendo.
+              </p>
             </div>
-
-            <br />
-
-            Me caracterizo por ser una persona responsable, disciplinada y comprometida con el aprendizaje continuo. Disfruto construir interfaces limpias, accesibles y responsivas, siempre priorizando la experiencia del usuario y las buenas prácticas de desarrollo.
-
-            <br />
-            
-            Mi discapacidad auditiva ha fortalecido habilidades como la concentración, la perseverancia y la atención al detalle, cualidades que aplico diariamente en cada proyecto.
-
-            <br />
-
-            <span className="font-bold text-black dark:text-white">
-              Actualmente busco una oportunidad como aprendiz o profesional junior de desarrollo de software
-            </span>{" "}
-            donde aplicar y seguir creciendo.
 
             <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none" />
           </Card>

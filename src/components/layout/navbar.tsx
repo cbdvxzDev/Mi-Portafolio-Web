@@ -24,15 +24,21 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
+  // Bloqueo de scroll del body cuando el menú móvil está abierto
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       firstLinkRef.current?.focus();
     } else {
       document.body.style.overflow = 'unset';
     }
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Limpieza al desmountar para no dejar el body bloqueado
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -42,6 +48,39 @@ export const Navbar = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  // Trap de foco: el Tab no debe salir del diálogo del menú móvil
+  useEffect(() => {
+    if (!isOpen) return;
+    const dialog = document.getElementById('mobile-menu');
+    if (!dialog) return;
+
+    const getFocusable = () =>
+      Array.from(
+        dialog.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+      );
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleTab);
+    return () => window.removeEventListener('keydown', handleTab);
   }, [isOpen]);
 
   const scrollToTop = (e: React.MouseEvent) => {
@@ -126,6 +165,7 @@ export const Navbar = () => {
               role="dialog"
               aria-modal="true"
               aria-label="Menú de navegación"
+              id="mobile-menu"
               className="fixed inset-0 bg-white dark:bg-black flex flex-col justify-center px-8 md:hidden"
               style={{ height: '100dvh' }}
             >

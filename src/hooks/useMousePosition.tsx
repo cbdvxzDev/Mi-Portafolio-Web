@@ -1,9 +1,14 @@
-// src/hooks/useMousePosition.ts
-import { useState, useEffect } from 'react';
-import { useReducedMotion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useMotionValue, useReducedMotion, type MotionValue } from 'framer-motion';
 
-export const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+interface MousePosition {
+  x: MotionValue<number>;
+  y: MotionValue<number>;
+}
+
+export const useMousePosition = (): MousePosition => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -11,12 +16,13 @@ export const useMousePosition = () => {
     if (reduceMotion) return;
 
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      x.set(e.clientX);
+      y.set(e.clientY);
     };
 
     window.addEventListener('mousemove', updateMousePosition);
     return () => window.removeEventListener('mousemove', updateMousePosition);
-  }, [reduceMotion]);
+  }, [reduceMotion, x, y]);
 
-  return mousePosition;
+  return { x, y };
 };
